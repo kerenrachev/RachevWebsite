@@ -1,0 +1,176 @@
+<?php 
+if(isset($_POST['submit'])){
+    $to = "rachevsites@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $telephone = $_POST['telephone'];
+    $subject = "לקוח פוטנציאלי";
+    $subject2 = "תודה שהשארת פרטים ב-Rachev אתרים";
+    $message2 = "תודה על פנייתך ל-Rachev בניית אתרים.נחזור אליך בהקדם האפשרי.";
+
+    $headers = "From: " . strip_tags($_POST['email']) . "\r\n";
+    $headers .= "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
+    $headers .= "CC: rachevsites@gmail.com\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+   
+    $message = '<html><body>';
+    $message .= '<img src="//css-tricks.com/examples/WebsiteChangeRequestForm/images/wcrf-header.png" alt="Website Change Request" />';
+     $message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
+     $message .= "<tr style='background: #eee;'><td><strong>שם:</strong> </td><td>" . strip_tags($_POST['name']) . "</td></tr>";
+     $message .= "<tr><td><strong>אימייל:</strong> </td><td>" . strip_tags($_POST['email']) . "</td></tr>";
+     $message .= "<tr><td><strong>מספר טלפון:</strong> </td><td>" . strip_tags($_POST['telephone']) . "</td></tr>";
+    $message .= "</table>";
+    $message .= "</body></html>";
+   
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo '<script>alert("תודה רבה, ניצור קשר בהקדם!")</script>';
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }
+?> 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Affordable and professional web design">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Brad Traversy">
+      
+        <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
+    <title>Rachev Web Deisgn | Welcome</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Rachev</span> בניית אתרים</h1>
+        </div>
+        <nav>
+          <ul>  
+            <li><a href="">מחירים</a></li>
+              <li><a href="">מי אנחנו</a></li>
+            <li class="current"><a href="index.html">ראשי</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>בניית אתרים בעיצוב אישי</h1>
+        <p>אתר אינטרנט לעסק, גם הקטן ביותר – הוא חובה במציאות של היום. להקים אתר פשוט לא מוכרח להיות סיפור יקר. הוא מספק כל כך הרבה תועלות לביסוס מעמדו של העסק ומיתוגו, לצד מידע רב שנגיש לרשות הלקוח, וחוסך לנו זמן רב בהסברים מיותרים שחוזרים על עצמם בכל שיחה עם כל לקוח פוטנציאלי – כל המידע קיים באתר. עסק שלא מבין את זה – יבין בעתיד.</p>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <h1>השאירו פרטים וניצור איתכם קשר</h1>
+        <form >
+          <input id= "input" name="name" type="name" placeholder="שם:" required/>
+          <input id= "input" name="email" type="email" placeholder="אימייל:" required/>
+          <input id= "input" name="telephone" type="tel" placeholder="מספר טלפון" required/>
+          <button class="button_1" name="submit" type="submit" >שלח פרטים</button>
+
+        </form>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <div class="container">
+        <button class="box">
+          <img src="./img/1.png">
+          <h3>אבטחת SSL לאתר במתנה</h3>
+          <p>אנחנו נדאג לך לאבטחת SSL בסיסית לאתר שלך על חשבונינו למשך שנה.</p>
+        </button>
+          <button class="box">
+          <img src="./img/4.png">
+          <h3>התאמה לכול סוגי המסכים</h3>
+          <p>אנחנו נדאג לבנות לך אתר רספונסטיבי, אשר יהיה מותאם לכול סוגי המסכים.</p>
+        </button>
+          <button class="box">
+          <img src="./img/5.png">
+          <h3>פנויים 24/7 לכול בעיה!</h3>
+          <p>ניתן לשלוח הודעה בווצאפ בכול שעה לכול בעיה, נדאג לעשות כמיטב יכולתינו לסייע לך.</p>
+        </button>
+        <button class="box">
+          <img src="./img/logo_html.png">
+          <h3>אתר HTML</h3>
+          <p>מבנה כול עמוד ועמוד על פי בקשת הלקוח. בניית האתר בשפת HTML. </p>
+        </button>
+        <button class="box">
+          <img src="./img/logo_css.png">
+          <h3>עיצוב מקצועי עם -CSS</h3>
+          <p>עיצוב מקצועי לפי בקשתך, שיותאם באופן מושלם לתחום עיסוקיך והשירותים שאתה מספק. </p>
+        </button>
+        <button class="box">
+          <img src="./img/logo_brush.png">
+          <h3>דומיין ואיחסון במתנה</h3>
+          <p>אתה מקבל מאיתנו במתנה דומיין ואיחסון לאתר למשך שנה.</p>
+        </button>
+      </div>
+    </section>
+    <section id="main">
+      <div class="container">
+        <article id="main-col">
+          <ul id="services">
+            <li>
+              <h3>אתר תדמית</h3>
+              <p>אתר תדמית יכיל מספר עמודים שיציגו את העסק שלך והשירותים שלך.</p>
+
+            </li>
+            <li>
+              <h3>אתר פורטפוליו</h3>
+              <p>אתר פורטפוליו בדרך כלל יורכב מעמוד או שניים, כאשר הדגש המרכזי הוא העיצוב. מתאים בדרך כלל לעוסקים בתחומים וויזואליים יותר- צלמים, מעצבים, אריכלים ועוד.</p>
+			
+            </li>
+            <li>
+              <h3>דף נחיתה</h3>
+              <p>זוהי הדרך הנפוצה ביותר לפרסום עסקים ושירותים למינהם. כלומר- גם אם יש לך אתר, זה לא אומר שאין צורך גם בעמוד נחיתה.
+עמוד נחיתה נועד על מנת למקד את את המשתמש לביצוע רכישה במהירות האפשרית.</p>
+				
+            </li>
+          </ul>
+        </article>
+
+        <aside id="sidebar">
+          <div class="dark">
+            <h1>למה אני צריך אתר?</h1>
+               <article>
+                  <p>רוב מוחלט ממחפשי השירות, מבצעים תחקיר ראשוני באינטרנט טרם רכישה. אם אין לך אתר, אין לך שום סיכוי לתפוס נתח מהשוק הזה.
+
+האתר שלך יכול להיות זמין 24/7/365 גם כשאתה לא. אתר פועל כפרקליטך העסקי "תמיד פעיל" בשעות המשרד ומחוצה לו.</p>
+                   
+                   <p>קיום אתר טוב מגביר באופן מיידי את אמינותך כעסק לגיטימי.
+
+הרושם הראשוני נחשב, ואתרי האינטרנט מאפשרים לך ליצור רושם חזק מאוד עם מבוא מעוצב היטב לעסק שלך.
+
+אתר יכול לעזור להציג את המומחיות שלך ולקדם טוב יותר את העסק שלך. אתר יכול להיות הכלי מספר אחד שלך לבלוט בקרב קהל.</p>
+               <p>בניית אתר לא חייב להיות עסק יקר, ומעבר לכך,זה יכול להיות מאוד משתלם. אתרים מציעים החזר השקעה טוב יותר מכל צורת פרסום אחרת. אם אתה מתכנן לשווק את העסק שלך, אתר צריך להיות בראש סדר העדיפויות שלך.</p>
+               <p></p>
+              </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <p>Rachev Web Deisgn, Copyright &copy; 2020</p>
+    </footer>
+      
+                  
+    <a  class="whats-app" href="https://wa.me/+9720524017711" target="_blank">
+       <img src="images/whatssap.png" style="decoration: none; ">
+    </a>
+    <a class="icon-call-me" href="tel:+972524017711" style="decoration:none; "><img src="img/call-me.png"></a>
+      
+    <a class="icon-instagram" href="https://www.instagram.com/rachev_sites" style="decoration:none; "><img src="img/instagram.png"></a>
+      
+    <a class="icon-whatsapp" href="https://wa.me/+9720524017711" target="_blank" style="decoration:none; "><img src="img/whatsapp-icon.png"></a>
+   
+       
+  </body>
+</html>
